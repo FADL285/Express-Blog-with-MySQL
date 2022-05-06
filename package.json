@@ -1,0 +1,27 @@
+{
+  "name": "express-blog-with-mysql",
+  "version": "1.0.0",
+  "description": "Using MySQL in Node &amp; Express to build Simple CRUD App ( Blog )",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FADL285/Express-Blog-with-MySQL.git"
+  },
+  "keywords": [],
+  "author": "Mohamed Fadl <Mohamed.Fadl2852@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FADL285/Express-Blog-with-MySQL/issues"
+  },
+  "homepage": "https://github.com/FADL285/Express-Blog-with-MySQL#readme",
+  "dependencies": {
+    "ejs": "^3.1.7",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
