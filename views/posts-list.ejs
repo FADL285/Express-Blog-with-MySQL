@@ -1,28 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <%- include('includes/head', { title: 'All Posts' }) %>
+    <link rel="stylesheet" href="/styles/posts.css" />
+  </head>
 
-<head>
-  <%- include('includes/head', { title: 'All Posts' }) %>
-  <link rel="stylesheet" href="/styles/posts.css">
-</head>
-
-<body>
-  <%- include('includes/header') %>
-  <main id="all-posts">
-    <h1>All Posts</h1>
-    <% if (!posts || posts.length === 0) { %>
+  <body>
+    <%- include('includes/header') %>
+    <main id="all-posts">
+      <h1>All Posts</h1>
+      <% if (!posts || posts.length === 0) { %>
       <p>No Posts Found - Maybe start creating some?</p>
       <a href="/create-post" class="btn">Create a new post</a>
-    <% } else {  %>
+      <% } else { %>
       <ol id="posts-list">
         <% for( const post of posts ) { %>
-          <li>
-            <%- include('includes/post-item', { post })  %> 
-          </li>
+        <li><%- include('includes/post-item', { post }) %></li>
         <% } %>
       </ol>
-    <% } %> 
-  </main>
-</body>
-
+      <% } %>
+    </main>
+  </body>
 </html>

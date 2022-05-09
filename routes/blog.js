@@ -51,7 +51,28 @@ router.get('/posts/:id', async (req, res) => {
   res.render('post-details', { post: postData });
 });
 
+// UPDATE POST View
+router.get('/posts/:id/edit', async (req, res) => {
+  const query = 'SELECT * FROM posts WHERE posts.id = ?';
+  const [posts] = await db.query(query, [req.params.id]);
+  // ? Handle 404 error - Not Found
+  if (!posts || posts.length === 0) return res.status(404).render('404');
+  // ? Render the resource
+  res.render('update-post', { post: posts[0] });
+});
+
 // UPDATE POST
-router.get('');
+router.post('/posts/:id/edit', async (req, res) => {
+  const data = [
+    req.body.title,
+    req.body.summary,
+    req.body.content,
+    req.params.id
+  ];
+  const query =
+    'UPDATE posts SET title = ?, summary = ?, body = ? WHERE posts.id = ?';
+  await db.query(query, data);
+  res.redirect('/posts/' + req.params.id);
+});
 
 module.exports = router;
