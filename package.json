@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
-    "format": "prettier ./**/*.js --write"
+    "format": "prettier ./**/*.js --write",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "npm run lint -- --fix"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,9 @@
     "mysql2": "^2.3.3"
   },
   "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "nodemon": "^2.0.16",
     "prettier": "^2.6.2"
   }
