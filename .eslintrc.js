@@ -4,17 +4,17 @@ module.exports = {
     commonjs: true,
     es2021: true
   },
-  extends: ["eslint:recommended", "prettier"],
+  extends: ['eslint:recommended', 'prettier'],
   parserOptions: {
-    ecmaVersion: "latest"
+    ecmaVersion: 'latest'
   },
-  plugins: ["prettier"],
+  plugins: ['prettier'],
   rules: {
-    "prettier/prettier": 2,
-    "no-use-before-define": ["error", { functions: true, classes: true }],
-    "no-var": "error",
-    "prefer-const": "error",
-    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "no-unused-vars": ["error", { argsIgnorePattern: "_next" }]
+    'prettier/prettier': 'error',
+    'no-use-before-define': ['error', { functions: true, classes: true }],
+    'no-var': 'error',
+    'prefer-const': 'error',
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-unused-vars': ['error', { argsIgnorePattern: '_next' }]
   }
 };
