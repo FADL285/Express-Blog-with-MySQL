@@ -26,7 +26,27 @@ router.post("/posts", async (req, res) => {
     `INSERT INTO posts (title, summary, body, author_id) VALUES (?)`,
     [data]
   );
-  res.redirect("/");
+  res.redirect("/posts");
+});
+
+router.get("/posts/:id", async (req, res) => {
+  const query =
+    "SELECT posts.*, authors.name AS author, authors.email AS author_email FROM posts INNER JOIN authors ON posts.author_id = authors.id WHERE posts.id = ?";
+  const [posts] = await db.query(query, [req.params.id]);
+
+  // ? Handle 404 error - Not Found
+  if (!posts || posts.length === 0) return res.status(404).render("404");
+  // ? Render the resource
+  const postData = {
+    ...posts[0],
+    humanReadableDate: posts[0].date.toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    })
+  };
+  res.render("post-details", { post: postData });
 });
 
 module.exports = router;
